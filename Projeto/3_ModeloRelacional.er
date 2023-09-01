@@ -1,0 +1,67 @@
+table JOGADOR
+(
+  _NumCC_,
+  Nome,
+  DataNasc,
+  Altura,
+  Nacionalidade,
+  MelhorPé,
+  PosId --> POSIÇÃO.PosId,
+  EquipaId --> EQUIPA.EquipaId
+)
+
+table TELEFONE
+(
+  _NumCC_ --> JOGADOR.NumCC,
+  _NumTel_
+)
+
+table TREINADOR
+(
+  _NumCC_,
+  Nome
+)
+
+table ARBITRO
+(
+  _NumCC_,
+  Nome
+)
+
+table POSIÇÃO
+(
+  _PosId_,
+  Nome,
+  Sigla
+)
+
+table EQUIPA
+(
+  _EquipaId_,
+  Nome,
+  CCTreinador --> TREINADOR.NumCC
+)
+
+table JOGO
+(
+  _JogoId_,
+  Estádio,
+  Data,
+  HInício,
+  HFim,
+  CCArbitro --> ARBITRO.NumCC
+)
+
+table PARTICIPA
+(
+  _EquipaId_ --> EQUIPA.EquipaId,
+  _JogoId_ --> JOGO.JogoId
+)
+
+table ATRIBUI
+(
+  _CCArbitro_ --> ARBITRO.NumCC,
+  _CCJogador_ --> JOGADOR.NumCC,
+  CartãoAmarelo?,
+  CartãoVermelho?
+)

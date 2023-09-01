@@ -1,0 +1,50 @@
+JOGADOR (
+  _NumCC_,
+  Nome,
+  DataNasc,
+  .Idade.,
+  Altura,
+  Nacionalidade,
+  { Telefone },
+  MelhorPé
+)
+
+TREINADOR (
+  _NumCC_,
+  Nome
+)
+
+ÁRBITRO (
+  _NumCC_,
+  Nome
+)
+
+EQUIPA (
+  _EquipaId_,
+  Nome
+)
+
+POSIÇÃO (
+  _PosId_,
+  Nome,
+  Sigla
+)
+
+JOGO (
+  _JogoId_,
+  Estádio,
+  Data,
+  Hora (Início, Fim)
+)
+
+JOGADOR === N === <OCUPA> === 1 === POSIÇÃO
+
+JOGADOR === N === <JOGA> === 1 === EQUIPA
+
+TREINADOR === 1 === <TREINA> === 1 === EQUIPA
+
+EQUIPA === N === <PARTICIPA> === M === JOGO
+
+JOGO === N === <ARBITRADO> === 1 === ÁRBITRO
+
+ÁRBITRO --- M --- <ATRIBUI(CAmarelo?,CVermelho?)> --- N --- JOGADOR
